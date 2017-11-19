@@ -11,8 +11,6 @@ class ArgHandler (arguments: Array<String>)
 {
 	val args: Array<String>
 	val options: Options = Options()
-	
-	var projectBuilder: ProjectBuilder = ProjectBuilder()
 	var doBuild: Boolean = false
 	
 	init
@@ -64,12 +62,12 @@ class ArgHandler (arguments: Array<String>)
 				
 				"projectdir" -> {
 					val arg: String ?= commandLine.args(opstr)!!.get(0)
-					projectBuilder.setProjectDir(arg)
+					ProjectBuilder.setProjectDir(arg)
 				}
 				
 				"outputdir" -> {
 					val arg: String ?= commandLine.args(opstr)!!.get(0)
-					projectBuilder.setOutputDirectory(arg)
+					ProjectBuilder.setOutputDirectory(arg)
 				}
 				
 				else -> {
@@ -78,7 +76,7 @@ class ArgHandler (arguments: Array<String>)
 			}
 		}
 		
-		if (doBuild) projectBuilder.build()
+		if (doBuild) ProjectBuilder.build()
 	}
 	
 	/**
